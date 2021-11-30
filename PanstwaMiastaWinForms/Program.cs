@@ -8,8 +8,6 @@ namespace PanstwaMiastaWinForms
 {
 	static class Program
 	{
-		static char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'w', 'z' };
-		static List<int> randomIndexes = new List<int>();
 		
 		static List<List<string>> answersGivenByBots = new List<List<string>>();
 		[STAThread] 
@@ -19,29 +17,29 @@ namespace PanstwaMiastaWinForms
 			Application.SetCompatibleTextRenderingDefault(false);
 			Form1 menu = new Form1();
 			Application.Run(menu);
-			int rounds = menu.roundsAmount;
-			drawRandomIndexes(rounds); 
-			for (int i = 0; i < rounds; i++)
+			Variables.roundsAmount = menu.roundsAmount;
+			drawRandomIndexes(Variables.roundsAmount); 
+			for (int i = 0; i < Variables.roundsAmount; i++)
 			{
+				Variables.currentRoundNumber = i + 1;
 				possibleAnwsers.Clear();
 				answersGivenByBots.Clear();
 				fillList(i);
 				// Console.WriteLine(possibleAnwsers.Print(2,0)); 
+				Variables.currentLetterIndex = Variables.randomIndexes[i]; 
 				Game game = new Game();
-				game.litera = "Litera: " + alphabet[randomIndexes[i]];
 				Application.Run(game);
-				
 			}
 		}
 		static void drawRandomIndexes(int rounds)
 		{
-			while (randomIndexes.Count < rounds)
+			while (Variables.randomIndexes.Count < rounds)
 			{
 				Random rnd = new Random();
 				int index = rnd.Next(22);
-				if (!(randomIndexes.Contains(index)))
+				if (!(Variables.randomIndexes.Contains(index)))
 				{
-					randomIndexes.Add(index);
+					Variables.randomIndexes.Add(index);
 				}
 			}
 		}
@@ -74,7 +72,7 @@ namespace PanstwaMiastaWinForms
 				}
 				foreach (string line in System.IO.File.ReadLines(location))
 				{
-					if (line[0] == alphabet[randomIndexes[round]])
+					if (line[0] == Variables.alphabet[Variables.randomIndexes[round]] || line[0] == Char.ToUpper(Variables.alphabet[Variables.randomIndexes[round]]))
 					{
 						temp.Add(line);
 					}

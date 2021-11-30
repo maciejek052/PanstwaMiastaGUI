@@ -235,7 +235,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			// timer1
 			// 
-			this.timer1.Interval = 10;
+			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
 			// starting1
@@ -296,12 +296,12 @@ namespace PanstwaMiastaWinForms
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox difficultyBox;
-		private System.Windows.Forms.ComboBox botAmountBox;
-		private System.Windows.Forms.ComboBox roundAmountBox;
 		private System.Windows.Forms.TextBox nameBox;
 		private Starting starting1;
 		private System.Windows.Forms.Timer timer1;
+		public System.Windows.Forms.ComboBox difficultyBox;
+		public System.Windows.Forms.ComboBox botAmountBox;
+		public System.Windows.Forms.ComboBox roundAmountBox;
 	}
 }
 

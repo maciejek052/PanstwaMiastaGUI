@@ -81,6 +81,7 @@
     <Compile Include="Starting.Designer.cs">
       <DependentUpon>Starting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Variables.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

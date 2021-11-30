@@ -39,7 +39,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.startingText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.startingText.BackColor = System.Drawing.Color.Transparent;
-			this.startingText.Font = new System.Drawing.Font("Lucida Sans Unicode", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.startingText.Font = new System.Drawing.Font("Poppins", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.startingText.ForeColor = System.Drawing.Color.Indigo;
 			this.startingText.Location = new System.Drawing.Point(12, 447);
 			this.startingText.Name = "startingText";
@@ -52,7 +52,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.diffLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.diffLabel.BackColor = System.Drawing.Color.Transparent;
-			this.diffLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.diffLabel.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.diffLabel.ForeColor = System.Drawing.Color.Indigo;
 			this.diffLabel.Location = new System.Drawing.Point(12, 297);
 			this.diffLabel.Name = "diffLabel";
@@ -65,7 +65,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.roundsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.roundsLabel.BackColor = System.Drawing.Color.Transparent;
-			this.roundsLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.roundsLabel.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.roundsLabel.ForeColor = System.Drawing.Color.Indigo;
 			this.roundsLabel.Location = new System.Drawing.Point(12, 337);
 			this.roundsLabel.Name = "roundsLabel";
@@ -78,7 +78,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.botsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.botsLabel.BackColor = System.Drawing.Color.Transparent;
-			this.botsLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.botsLabel.Font = new System.Drawing.Font("Poppins", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.botsLabel.ForeColor = System.Drawing.Color.Indigo;
 			this.botsLabel.Location = new System.Drawing.Point(12, 377);
 			this.botsLabel.Name = "botsLabel";

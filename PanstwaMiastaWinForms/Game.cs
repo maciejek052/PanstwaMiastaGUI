@@ -12,43 +12,25 @@ namespace PanstwaMiastaWinForms
 {
 	public partial class Game : Form
 	{
-		public string litera
-		{
-			set { this.letter.Text = value; }
-		}
-		public string panstwo
-		{
-			get { return textBox1.Text; }
-		}
-		public string miasto
-		{
-			get { return textBox2.Text; }
-		}
-		public string zwierze
-		{
-			get { return textBox3.Text; }
-		}
-		public string zawod
-		{
-			get { return textBox4.Text; }
-		}
-		public string owoc
-		{
-			get { return textBox5.Text; }
-		}
-		public string kolor
-		{
-			get { return textBox6.Text; }
-		}
-
-
 		public Game()
 		{
 			InitializeComponent();
+			letter.Text = "Litera: " + Char.ToUpper(Variables.alphabet[Variables.randomIndexes[Variables.currentRoundNumber-1]]);
+			this.Text = "Panstwa-miasta - runda " + Variables.currentRoundNumber + "/" + Variables.roundsAmount; 
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			addAnswersToList();
+			lockTextboxes();
+			if (possibleAnwsers.Find(0, textBox1.Text))
+				textBox1.BackColor = Color.LightGreen;
+			else
+				textBox1.BackColor = Color.OrangeRed;
+			if (possibleAnwsers.Find(1, textBox2.Text))
+				textBox2.BackColor = Color.LightGreen;
+			else
+				textBox2.BackColor = Color.OrangeRed;
 			if (possibleAnwsers.Find(2, textBox3.Text))
 				textBox3.BackColor = Color.LightGreen;
 			else
@@ -65,7 +47,32 @@ namespace PanstwaMiastaWinForms
 				textBox6.BackColor = Color.LightGreen;
 			else
 				textBox6.BackColor = Color.OrangeRed;
+			button1.Visible = false;
+			button2.Visible = true; 
+		}
 
+		private void button2_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+		private void addAnswersToList()
+		{
+			List<String> temp = new List<String>();
+			temp.Add(textBox1.Text);
+			temp.Add(textBox2.Text);
+			temp.Add(textBox3.Text);
+			temp.Add(textBox4.Text);
+			temp.Add(textBox5.Text);
+			temp.Add(textBox6.Text);
+		}
+		private void lockTextboxes()
+		{
+			textBox1.ReadOnly = true;
+			textBox2.ReadOnly = true;
+			textBox3.ReadOnly = true;
+			textBox4.ReadOnly = true;
+			textBox5.ReadOnly = true;
+			textBox6.ReadOnly = true;
 		}
 	}
 }
