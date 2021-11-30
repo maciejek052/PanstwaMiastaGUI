@@ -23,27 +23,27 @@ namespace PanstwaMiastaWinForms
 		{
 			addAnswersToList();
 			lockTextboxes();
-			if (possibleAnwsers.Find(0, textBox1.Text))
+			if (Variables.possibleAnswers[0].Contains(textBox1.Text))
 				textBox1.BackColor = Color.LightGreen;
 			else
 				textBox1.BackColor = Color.OrangeRed;
-			if (possibleAnwsers.Find(1, textBox2.Text))
+			if (Variables.possibleAnswers[1].Contains(textBox2.Text))
 				textBox2.BackColor = Color.LightGreen;
 			else
 				textBox2.BackColor = Color.OrangeRed;
-			if (possibleAnwsers.Find(2, textBox3.Text))
+			if (Variables.possibleAnswers[2].Contains(textBox3.Text))
 				textBox3.BackColor = Color.LightGreen;
 			else
 				textBox3.BackColor = Color.OrangeRed;
-			if (possibleAnwsers.Find(3, textBox4.Text))
+			if (Variables.possibleAnswers[3].Contains(textBox4.Text))
 				textBox4.BackColor = Color.LightGreen;
 			else
 				textBox4.BackColor = Color.OrangeRed;
-			if (possibleAnwsers.Find(4, textBox5.Text))
+			if (Variables.possibleAnswers[4].Contains(textBox5.Text))
 				textBox5.BackColor = Color.LightGreen;
 			else
 				textBox5.BackColor = Color.OrangeRed;
-			if (possibleAnwsers.Find(5, textBox6.Text))
+			if (Variables.possibleAnswers[5].Contains(textBox6.Text))
 				textBox6.BackColor = Color.LightGreen;
 			else
 				textBox6.BackColor = Color.OrangeRed;

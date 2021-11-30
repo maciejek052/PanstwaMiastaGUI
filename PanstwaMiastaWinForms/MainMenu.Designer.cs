@@ -1,7 +1,7 @@
 ﻿
 namespace PanstwaMiastaWinForms
 {
-	partial class Form1
+	partial class MainMenu
 	{
 		/// <summary>
 		/// Wymagana zmienna projektanta.
@@ -30,7 +30,7 @@ namespace PanstwaMiastaWinForms
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
 			this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
 			this.playButton = new System.Windows.Forms.Button();
 			this.settingsButton = new System.Windows.Forms.Button();
@@ -251,7 +251,7 @@ namespace PanstwaMiastaWinForms
 			this.starting1.TabIndex = 26;
 			this.starting1.Visible = false;
 			// 
-			// Form1
+			// MainMenu
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -274,7 +274,7 @@ namespace PanstwaMiastaWinForms
 			this.Controls.Add(this.axWindowsMediaPlayer1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
-			this.Name = "Form1";
+			this.Name = "MainMenu";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Państwa Miasta - Menu główne";
 			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();

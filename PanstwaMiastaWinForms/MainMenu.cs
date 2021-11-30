@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PanstwaMiastaWinForms
 {
-	public partial class Form1 : Form
+	public partial class MainMenu : Form
 	{
 		public int roundsAmount
 		{
@@ -26,7 +26,7 @@ namespace PanstwaMiastaWinForms
 		}
 
 		bool isPaused = false;
-		public Form1()
+		public MainMenu()
 		{
 			InitializeComponent();
 			axWindowsMediaPlayer1.settings.playCount = 1000;
