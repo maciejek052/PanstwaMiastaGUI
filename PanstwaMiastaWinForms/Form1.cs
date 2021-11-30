@@ -12,6 +12,19 @@ namespace PanstwaMiastaWinForms
 {
 	public partial class Form1 : Form
 	{
+		public int roundsAmount
+		{
+			get { return roundAmountBox.SelectedIndex + 1;  }
+		}
+		public int botsAmount
+		{
+			get { return botAmountBox.SelectedIndex + 1;  }
+		}
+		public int difficulty
+		{
+			get { return difficultyBox.SelectedIndex;  }
+		}
+
 		bool isPaused = false;
 		public Form1()
 		{
@@ -21,24 +34,6 @@ namespace PanstwaMiastaWinForms
 			difficultyBox.SelectedIndex = 0;
 			botAmountBox.SelectedIndex = 2;
 			roundAmountBox.SelectedIndex = 2;
-		}
-
-		public int difficultyLevel
-		{
-			get { return difficultyBox.SelectedIndex; }
-		}
-		public int roundsAmount
-		{
-			get { return roundAmountBox.SelectedIndex + 1;  }
-		}
-		public int botsAmount
-		{
-			get { return botAmountBox.SelectedIndex + 1; }
-		}
-		public string playerName
-		{
-			// does not work, dunno why
-			get { return nameBox.Text;  }
 		}
 		private void toggleAnimationButton_Click(object sender, EventArgs e)
 		{
@@ -101,7 +96,24 @@ namespace PanstwaMiastaWinForms
 
 		private void playButton_Click(object sender, EventArgs e)
 		{
-			this.Close(); 
+			// this.Close();
+			starting1.Visible = true;
+			starting1.diffLabelText = "Poziom trudności: " + difficultyBox.Text;
+			starting1.roundsLabelText = "Liczba rund: " + roundAmountBox.Text;
+			starting1.botsLabelText = "Liczba botów: " + botAmountBox.Text; 
+			timer1.Enabled = true;
+
+		}
+		int i = 5; 
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			i--; 
+			starting1.labelText = "Gra rozpocznie się za " + i + "...";
+			if (i == 0)
+			{
+				timer1.Enabled = false;
+				this.Close(); 
+			}
 		}
 	}
 }

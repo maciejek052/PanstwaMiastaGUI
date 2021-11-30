@@ -29,6 +29,7 @@ namespace PanstwaMiastaWinForms
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
 			this.playButton = new System.Windows.Forms.Button();
@@ -45,6 +46,8 @@ namespace PanstwaMiastaWinForms
 			this.botAmountBox = new System.Windows.Forms.ComboBox();
 			this.roundAmountBox = new System.Windows.Forms.ComboBox();
 			this.nameBox = new System.Windows.Forms.TextBox();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.starting1 = new PanstwaMiastaWinForms.Starting();
 			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -230,11 +233,30 @@ namespace PanstwaMiastaWinForms
 			this.nameBox.Text = "Gracz";
 			this.nameBox.Visible = false;
 			// 
+			// timer1
+			// 
+			this.timer1.Interval = 10;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// starting1
+			// 
+			this.starting1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("starting1.BackgroundImage")));
+			this.starting1.botsLabelText = "Liczba botów:";
+			this.starting1.diffLabelText = "Poziom trudności:";
+			this.starting1.labelText = "Gra rozpocznie się za 5...";
+			this.starting1.Location = new System.Drawing.Point(0, 0);
+			this.starting1.Name = "starting1";
+			this.starting1.roundsLabelText = "Liczba rund:";
+			this.starting1.Size = new System.Drawing.Size(1012, 617);
+			this.starting1.TabIndex = 26;
+			this.starting1.Visible = false;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1012, 617);
+			this.Controls.Add(this.starting1);
 			this.Controls.Add(this.nameBox);
 			this.Controls.Add(this.roundAmountBox);
 			this.Controls.Add(this.botAmountBox);
@@ -253,6 +275,7 @@ namespace PanstwaMiastaWinForms
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Państwa Miasta - Menu główne";
 			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
 			this.ResumeLayout(false);
@@ -277,6 +300,8 @@ namespace PanstwaMiastaWinForms
 		private System.Windows.Forms.ComboBox botAmountBox;
 		private System.Windows.Forms.ComboBox roundAmountBox;
 		private System.Windows.Forms.TextBox nameBox;
+		private Starting starting1;
+		private System.Windows.Forms.Timer timer1;
 	}
 }
 
