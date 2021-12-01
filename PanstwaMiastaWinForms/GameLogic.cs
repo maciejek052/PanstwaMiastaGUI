@@ -13,7 +13,7 @@ namespace PanstwaMiastaWinForms
 	{
 		public static void fillList(int round)
 		{
-			Variables.possibleAnswers.Clear();
+			Model.possibleAnswers.Clear();
 			for (int j = 0; j < 6; j++)
 			{
 				string location = "";
@@ -41,24 +41,24 @@ namespace PanstwaMiastaWinForms
 				}
 				foreach (string line in System.IO.File.ReadLines(location))
 				{
-					if (line[0] == Variables.alphabet[Variables.randomIndexes[round]] || line[0] == Char.ToUpper(Variables.alphabet[Variables.randomIndexes[round]]))
+					if (line[0] == Model.alphabet[Model.randomIndexes[round]] || line[0] == Char.ToUpper(Model.alphabet[Model.randomIndexes[round]]))
 					{
 						temp.Add(line);
 					}
 				}
-				Variables.possibleAnswers.Add(temp);
+				Model.possibleAnswers.Add(temp);
 			}
 		}
 
 		public static void drawRandomIndexes(int rounds)
 		{
-			while (Variables.randomIndexes.Count < rounds)
+			while (Model.randomIndexes.Count < rounds)
 			{
 				Random rnd = new Random();
 				int index = rnd.Next(22);
-				if (!(Variables.randomIndexes.Contains(index)))
+				if (!(Model.randomIndexes.Contains(index)))
 				{
-					Variables.randomIndexes.Add(index);
+					Model.randomIndexes.Add(index);
 				}
 			}
 		}
@@ -70,11 +70,11 @@ namespace PanstwaMiastaWinForms
 			int chanceForGuessing = 0;
 			int possibleAnswersAmount = 0;
 			int randomAnswerIndex = 0; 
-			if (Variables.difficultyLevel == 1)
+			if (Model.difficultyLevel == 1)
 				botPercentageChance = 70;
-			else if (Variables.difficultyLevel == 2)
+			else if (Model.difficultyLevel == 2)
 				botPercentageChance = 80; 
-			for (int i = 0; i < Variables.numberOfBots; i++)
+			for (int i = 0; i < Model.numberOfBots; i++)
 			{
 				List<string> temp = new List<string>();
 				for (int j = 0; j < 6; j++)
@@ -82,22 +82,72 @@ namespace PanstwaMiastaWinForms
 					chanceForGuessing = rd.Next(101);
 					if (chanceForGuessing <= botPercentageChance)
 					{
-						possibleAnswersAmount = Variables.possibleAnswers[j].Count;
+						possibleAnswersAmount = Model.possibleAnswers[j].Count;
 						if (possibleAnswersAmount == 0)
 							temp.Add("-");
 						else
 						{
 							randomAnswerIndex = rd.Next(possibleAnswersAmount);
-							temp.Add(Variables.possibleAnswers[j][randomAnswerIndex]);
-							Variables.allGivenAnswers.Add(temp.Last());
+							temp.Add(Model.possibleAnswers[j][randomAnswerIndex]);
+							Model.allGivenAnswers.Add(temp.Last());
 						}
 					}
 					else
 						temp.Add("-"); 
 				}
-				Variables.answersGivenByBots.Add(temp); 
+				Model.answersGivenByBots.Add(temp); 
+			}
+		}
+		// here
+		public static void countPoints()
+		{
+			for (int i = 0; i < Model.numberOfBots; i++)
+			{
+				for (int j = 0; j < 6; j++)
+				{
+					if (Model.answersGivenByBots[i][j] == "-")
+						Model.botAnwerPoints[i,j] = 0;
+					else
+					{
+						int repeats = Model.allGivenAnswers.Where(x => (x == Model.answersGivenByBots[i][j])).Count();
+						if (repeats == 1)
+						{
+							Model.botAnwerPoints[i,j] = 15;
+							Model.botsPoints[i] += 15;
+						}
+						else
+						{
+							Model.botAnwerPoints[i, j] = 10;
+							Model.botsPoints[i] += 15;
+						}
+					}
+				}
+			}
+			for (int i = 0; i < 6; i++)
+			{
+				if (Model.possibleAnswers[i].Contains(Model.answersGivenByPlayer[i]))
+				{
+					int repeats = Model.allGivenAnswers.Where(x => (x == Model.answersGivenByPlayer[i])).Count();
+					if (repeats == 1)
+					{
+						Model.playerAnswerPoints[i] = 15;
+						Model.playerPoints += 15;
+					}
+					else
+					{
+						Model.playerAnswerPoints[i] = 10;
+						Model.playerPoints += 10;
+					}
+				}
+				else
+					Model.playerAnswerPoints[i] = 0;
 			}
 
+			// sort player results to show them in correct order in scoreboard
+			for (int i = 0; i < Model.numberOfBots; i++)
+				Model.sortedPoints.Add(Tuple.Create(i, Model.botsPoints[i]));
+			Model.sortedPoints.Add(Tuple.Create(Model.numberOfBots, Model.playerPoints));
+			Model.sortedPoints.OrderByDescending(t => t.Item1); 
 		}
 
 	}

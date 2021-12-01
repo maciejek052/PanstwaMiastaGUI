@@ -36,7 +36,7 @@ namespace PanstwaMiastaWinForms
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(481, 301);
+			this.label1.Location = new System.Drawing.Point(466, 332);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(35, 13);
 			this.label1.TabIndex = 0;
@@ -44,7 +44,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(467, 350);
+			this.button1.Location = new System.Drawing.Point(526, 600);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 1;

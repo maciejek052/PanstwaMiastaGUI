@@ -87,7 +87,7 @@
     <Compile Include="Starting.Designer.cs">
       <DependentUpon>Starting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Variables.cs" />
+    <Compile Include="Model.cs" />
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>

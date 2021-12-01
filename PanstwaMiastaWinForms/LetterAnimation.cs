@@ -19,8 +19,8 @@ namespace PanstwaMiastaWinForms
 		int i = 0; 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			letter.Text = Variables.alphabet[i].ToString().ToUpper();
-			if (i == Variables.currentLetterIndex)
+			letter.Text = Model.alphabet[i].ToString().ToUpper();
+			if (i == Model.currentLetterIndex)
 			{
 				timer1.Enabled = false;
 				button1.Visible = true;
