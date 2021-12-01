@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PanstwaMiastaWinForms
 {
-	class PrepareGame
+	class GameLogic
 	{
 		public static void fillList(int round)
 		{

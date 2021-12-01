@@ -19,14 +19,14 @@ namespace PanstwaMiastaWinForms
 			Variables.roundsAmount = menu.roundsAmount;
 			Variables.difficultyLevel = menu.difficulty;
 			Variables.numberOfBots = menu.botsAmount;
-			PrepareGame.drawRandomIndexes(Variables.roundsAmount); 
+			GameLogic.drawRandomIndexes(Variables.roundsAmount); 
 			for (int i = 0; i < Variables.roundsAmount; i++)
 			{
 				Variables.currentRoundNumber = i + 1;
 				Variables.answersGivenByBots.Clear();
 				Variables.allGivenAnswers.Clear(); 
-				PrepareGame.fillList(i);
-				PrepareGame.botsWork(); 
+				GameLogic.fillList(i);
+				GameLogic.botsWork(); 
 
 				// testing bots work
 
