@@ -47,6 +47,8 @@ namespace PanstwaMiastaWinForms
 				Game game = new Game();
 				Application.Run(game);
 			}
+			GameFinished finished = new GameFinished();
+			Application.Run(finished); 
 		}
 	}
 }
