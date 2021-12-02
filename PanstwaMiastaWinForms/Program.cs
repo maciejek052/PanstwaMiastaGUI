@@ -13,42 +13,30 @@ namespace PanstwaMiastaWinForms
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			MainMenu menu = new MainMenu();
-			Application.Run(menu);
-
-			Model.roundsAmount = menu.roundsAmount;
-			Model.difficultyLevel = menu.difficulty;
-			Model.numberOfBots = menu.botsAmount;
-			GameLogic.drawRandomIndexes(Model.roundsAmount); 
-			for (int i = 0; i < Model.roundsAmount; i++)
+			CheckAssets.checkAssets();
+			while (true)
 			{
-				Model.currentRoundNumber = i + 1;
-				Model.answersGivenByBots.Clear();
-				Model.allGivenAnswers.Clear();
-				Model.sortedPoints.Clear(); 
-				GameLogic.fillList(i);
-				GameLogic.botsWork(); 
-
-				// testing bots work
-
-				for (int j = 0; j < Model.numberOfBots; j++)
+				Model.initGame();
+				MainMenu menu = new MainMenu();
+				Application.Run(menu);
+				Model.roundsAmount = menu.roundsAmount;
+				Model.difficultyLevel = menu.difficulty;
+				Model.numberOfBots = menu.botsAmount;
+				GameLogic.drawRandomIndexes(Model.roundsAmount);
+				for (int i = 0; i < Model.roundsAmount; i++)
 				{
-					Console.WriteLine("Bot " + (j+1)); 
-					for (int k = 0; k < 6; k++)
-					{
-						Console.WriteLine(k + ": " + Model.answersGivenByBots[j][k]); 
-					}
-					Console.WriteLine("");
+					Model.currentRoundNumber = i + 1;
+					Model.initRound();
+					GameLogic.fillList(i);
+					GameLogic.botsWork();
+					Model.currentLetterIndex = Model.randomIndexes[i];
+					Game game = new Game();
+					Application.Run(game);
 				}
-
-
-
-				Model.currentLetterIndex = Model.randomIndexes[i]; 
-				Game game = new Game();
-				Application.Run(game);
+				GameFinished finished = new GameFinished();
+				Application.Run(finished);
 			}
-			GameFinished finished = new GameFinished();
-			Application.Run(finished); 
+
 		}
 	}
 }

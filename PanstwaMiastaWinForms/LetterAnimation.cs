@@ -15,6 +15,8 @@ namespace PanstwaMiastaWinForms
 		public LetterAnimation()
 		{
 			InitializeComponent();
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 		}
 		int i = 0; 
 		private void timer1_Tick(object sender, EventArgs e)

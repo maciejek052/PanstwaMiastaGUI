@@ -29,7 +29,21 @@ namespace PanstwaMiastaWinForms
 		public static int[] playerAnswerPoints = new int[6];
 		public static int[] botsPoints = new int[5];
 
-		
+		public static void initRound()
+		{
+			answersGivenByBots.Clear();
+			allGivenAnswers.Clear();
+			sortedPoints.Clear();
+			answersGivenByBots.Clear(); 
+		}
+		public static void initGame()
+		{
+			randomIndexes.Clear();
+			Array.Clear(answersGivenByPlayer, 0, answersGivenByPlayer.Length);
+			Array.Clear(botAnwerPoints, 0, botAnwerPoints.Length);
+			Array.Clear(playerAnswerPoints, 0, playerAnswerPoints.Length);
+			Array.Clear(botsPoints, 0, botsPoints.Length); 
+		}
 
 	}
 }

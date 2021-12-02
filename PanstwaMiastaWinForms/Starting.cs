@@ -36,6 +36,8 @@ namespace PanstwaMiastaWinForms
 		public Starting()
 		{
 			InitializeComponent();
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 		}
 	}
 }

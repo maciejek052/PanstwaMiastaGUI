@@ -15,6 +15,9 @@ namespace PanstwaMiastaWinForms
 		public Game()
 		{
 			InitializeComponent();
+			this.ControlBox = false;
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			letter.Text = "Litera: " + Char.ToUpper(Model.alphabet[Model.randomIndexes[Model.currentRoundNumber-1]]);
 			roundLabel.Text = "Runda: " + Model.currentRoundNumber + "/" + Model.roundsAmount;
 			this.Text = "Panstwa-miasta - runda " + Model.currentRoundNumber + "/" + Model.roundsAmount;
@@ -25,6 +28,7 @@ namespace PanstwaMiastaWinForms
 		private void button1_Click(object sender, EventArgs e)
 		{
 			addAnswersToList();
+			hideCheats();
 			lockTextboxes();
 			if (Model.possibleAnswers[0].Contains(panstwo.Text, StringComparer.OrdinalIgnoreCase))
 				panstwo.BackColor = Color.LightGreen;
@@ -160,5 +164,6 @@ namespace PanstwaMiastaWinForms
 			cheatOwoc.Visible = false;
 			cheatKolor.Visible = false;
 		}
+
 	}
 }

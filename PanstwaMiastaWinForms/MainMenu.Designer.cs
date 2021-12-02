@@ -241,6 +241,7 @@ namespace PanstwaMiastaWinForms
 			// starting1
 			// 
 			this.starting1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("starting1.BackgroundImage")));
+			this.starting1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.starting1.botsLabelText = "Liczba botów:";
 			this.starting1.diffLabelText = "Poziom trudności:";
 			this.starting1.labelText = "Gra rozpocznie się za 5...";

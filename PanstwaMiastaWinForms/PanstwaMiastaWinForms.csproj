@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9E6BF70A-4755-4368-8152-ADC9E295A005}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>PanstwaMiastaWinForms</RootNamespace>
     <AssemblyName>PanstwaMiastaWinForms</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckAssets.cs" />
     <Compile Include="GameFinished.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,10 +160,34 @@
     <None Include="bin\Debug\assets\images\bg.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.bmp" />
+    <None Include="bin\Debug\assets\images\bg_moreblur.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\assets\images\bg_moreblur.png" />
+    <None Include="bin\Debug\assets\images\win.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\assets\images\lose.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_moreblur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\assets\images\bg_logo_green.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\assets\images\bg_logo_red.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\assets\video\mainmenu.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gameover.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,21 +14,24 @@ namespace PanstwaMiastaWinForms
 	{
 		public int roundsAmount
 		{
-			get { return roundAmountBox.SelectedIndex + 1;  }
+			get { return roundAmountBox.SelectedIndex + 1; }
 		}
 		public int botsAmount
 		{
-			get { return botAmountBox.SelectedIndex + 1;  }
+			get { return botAmountBox.SelectedIndex + 1; }
 		}
 		public int difficulty
 		{
-			get { return difficultyBox.SelectedIndex;  }
+			get { return difficultyBox.SelectedIndex; }
 		}
 
 		bool isPaused = false;
 		public MainMenu()
 		{
 			InitializeComponent();
+			this.ControlBox = false;
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			axWindowsMediaPlayer1.settings.playCount = 1000;
 			backFromSettingsButton.Visible = false;
 			difficultyBox.SelectedIndex = 0;
@@ -41,7 +44,7 @@ namespace PanstwaMiastaWinForms
 			{
 				isPaused = true;
 				axWindowsMediaPlayer1.Ctlcontrols.pause();
-				toggleAnimationButton.Text = "Włącz animacje"; 
+				toggleAnimationButton.Text = "Włącz animacje";
 			}
 			else
 			{
@@ -54,7 +57,7 @@ namespace PanstwaMiastaWinForms
 		private void exitButton_Click(object sender, EventArgs e)
 		{
 			if (MessageBox.Show("Czy na pewno chcesz wyjść z gry?", ":(", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-				Application.Exit();
+				System.Environment.Exit(0);
 		}
 
 		private void backFromSettingsButton_Click(object sender, EventArgs e)
@@ -83,38 +86,39 @@ namespace PanstwaMiastaWinForms
 			botAmountBox.Visible = true;
 			roundAmountBox.Visible = true;
 			nameBox.Visible = true;
-			label1.Visible = true; 
-			label2.Visible = true; 
-			label3.Visible = true; 
-			label4.Visible = true; 
+			label1.Visible = true;
+			label2.Visible = true;
+			label3.Visible = true;
+			label4.Visible = true;
 		}
 
 		private void aboutButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Państwa Miasta GUI\nAutor: Maciej Czech\nProgram na zaliczenie z przedmiotu Komunikacja Człowiek-Komputer", "Informacje", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+			MessageBox.Show("Państwa Miasta GUI\nAutor: Maciej Czech\nProgram na zaliczenie z przedmiotu Komunikacja Człowiek-Komputer", "Informacje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void playButton_Click(object sender, EventArgs e)
 		{
 			// this.Close();
 			starting1.Visible = true;
-			Model.playerName = nameBox.Text; 
+			Model.playerName = nameBox.Text;
 			starting1.diffLabelText = "Poziom trudności: " + difficultyBox.Text;
 			starting1.roundsLabelText = "Liczba rund: " + roundAmountBox.Text;
-			starting1.botsLabelText = "Liczba botów: " + botAmountBox.Text; 
+			starting1.botsLabelText = "Liczba botów: " + botAmountBox.Text;
 			timer1.Enabled = true;
 
 		}
-		int i = 5; 
+		int i = 5;
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			i--; 
+			i--;
 			starting1.labelText = "Gra rozpocznie się za " + i + "...";
 			if (i == 0)
 			{
 				timer1.Enabled = false;
-				this.Close(); 
+				this.Close();
 			}
 		}
+		
 	}
 }

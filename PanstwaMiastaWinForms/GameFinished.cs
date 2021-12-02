@@ -15,16 +15,23 @@ namespace PanstwaMiastaWinForms
 		public GameFinished()
 		{
 			InitializeComponent();
+			this.ControlBox = false;
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			if (Model.sortedPoints[0].Item2 == Model.playerPoints)
 			{
-				label1.Text = "Wygrałeś!";
-				this.BackColor = Color.Green;
+				this.BackgroundImage = global::PanstwaMiastaWinForms.Properties.Resources.bg_logo_green;
+				label1.Text = "Wygrałeś! Twój wynik to " + Model.playerPoints;
+				label1.ForeColor = Color.Green;
+				winGif.Visible = true; 
 				this.Text = "Winner winner chicken dinner";
 			}
 			else
 			{
-				label1.Text = "Przegrałeś!";
-				this.BackColor = Color.Red;
+				this.BackgroundImage = global::PanstwaMiastaWinForms.Properties.Resources.bg_logo_red;
+				label1.Text = "Przegrałeś! Twój wynik to " + Model.playerPoints;
+				label1.ForeColor = Color.Red;
+				loseGif.Visible = true;
 				this.Text = "Kompletna porażka";
 			}
 		}

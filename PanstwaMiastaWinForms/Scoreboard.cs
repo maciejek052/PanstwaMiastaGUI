@@ -14,7 +14,10 @@ namespace PanstwaMiastaWinForms
 	{
 		public Scoreboard()
 		{
+			this.DoubleBuffered = true;
+			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			InitializeComponent();
+			this.DoubleBuffered = true; 
 			roundNo.Text = "Koniec rundy " + Model.currentRoundNumber;
 			for (int i = 0; i < Model.numberOfBots + 1; i++)
 			{
