@@ -26,9 +26,9 @@ namespace PanstwaMiastaWinForms
 		public static int playerPoints = 0;
 		public static int[,] botAnwerPoints = new int[6,6];
 		public static int[] playerAnswerPoints = new int[6];
-		public static int[] botsPoints = new int[5]; 
+		public static int[] botsPoints = new int[5];
 
-		
+		public static bool endRound = false;
 
 	}
 }

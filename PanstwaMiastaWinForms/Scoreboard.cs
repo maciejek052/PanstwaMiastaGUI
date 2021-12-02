@@ -23,31 +23,48 @@ namespace PanstwaMiastaWinForms
 				{
 					Label lbl = new Label();
 					this.Controls.Add(lbl); 
-					lbl.Top = i+j + 1 * 30; // 87
-					lbl.Left = i+j + 1 * 160; // 415
+					lbl.Top = (i + 1) * 60; // 87
+					lbl.Left = (j + 1) * 100; // 415
 					int whichPlayer = Model.sortedPoints[i].Item1;
 					int points = Model.sortedPoints[i].Item2;
 					
 					if (j == -1)
-						// lbl.Text = "Gracz" + whichPlayer;
-						Console.WriteLine("Gracz " + whichPlayer);
+					{
+						if (whichPlayer == Model.numberOfBots)
+							lbl.Text = "Gracz";
+						else
+							lbl.Text = "Bot " + (whichPlayer + 1); 
+
+						//Console.WriteLine("Gracz " + whichPlayer);
+					}
+
 					else if (j != 6)
 					{
-						if (i != Model.numberOfBots)
-							//lbl.Text = Model.answersGivenByBots[whichPlayer][j];
-							Console.WriteLine(Model.answersGivenByBots[whichPlayer][j]);
+						if (whichPlayer != Model.numberOfBots)
+						{
+							lbl.Text = Model.answersGivenByBots[whichPlayer][j];
+							//Console.WriteLine(Model.answersGivenByBots[whichPlayer][j]);
+						}
 						else
-							// lbl.Text = Model.answersGivenByPlayer[j];
-							Console.WriteLine(Model.answersGivenByPlayer[j]);
+						{
+							lbl.Text = Model.answersGivenByPlayer[j];
+							//Console.WriteLine(Model.answersGivenByPlayer[j]);
+						}
+
 					}
 					else
-						// lbl.Text = points.ToString(); 
-						Console.WriteLine(points); 
-					
-
+					{
+						lbl.Text = points.ToString();
+						//Console.WriteLine(points); 
+					}
 				}
 			}
 			
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Application.OpenForms["Game"].Close();  
 		}
 	}
 }

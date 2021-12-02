@@ -24,7 +24,8 @@ namespace PanstwaMiastaWinForms
 			{
 				Model.currentRoundNumber = i + 1;
 				Model.answersGivenByBots.Clear();
-				Model.allGivenAnswers.Clear(); 
+				Model.allGivenAnswers.Clear();
+				Model.sortedPoints.Clear(); 
 				GameLogic.fillList(i);
 				GameLogic.botsWork(); 
 

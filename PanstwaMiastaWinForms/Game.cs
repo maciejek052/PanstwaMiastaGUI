@@ -93,13 +93,14 @@ namespace PanstwaMiastaWinForms
 		private void scoreboard()
 		{
 			Scoreboard scoreboard = new Scoreboard();
-			scoreboard.BringToFront();
+			
 			scoreboard.Location = new System.Drawing.Point(0, 0);
 			scoreboard.Name = "scoreboard";
 			scoreboard.Size = new System.Drawing.Size(1012, 617);
-			scoreboard.TabIndex = 26;
-
+			// scoreboard.TabIndex = 26;
 			Controls.Add(scoreboard);
+			scoreboard.BringToFront();
+			
 		}
 		Random rd = new Random(); 
 		private string useCheat(int category)
@@ -149,6 +150,10 @@ namespace PanstwaMiastaWinForms
 		private void cheatKolor_Click(object sender, EventArgs e)
 		{
 			kolor.Text = useCheat(5);
+		}
+		public void endRound()
+		{
+			this.Close(); 
 		}
 	}
 }
