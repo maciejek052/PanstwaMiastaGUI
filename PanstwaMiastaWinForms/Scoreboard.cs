@@ -15,56 +15,76 @@ namespace PanstwaMiastaWinForms
 		public Scoreboard()
 		{
 			InitializeComponent();
-			Console.Clear(); 
-			
+			roundNo.Text = "Koniec rundy " + Model.currentRoundNumber;
 			for (int i = 0; i < Model.numberOfBots + 1; i++)
 			{
-				for (int j = -1; j < 7; j++)
+				for (int j = 0; j < 8; j++)
 				{
 					Label lbl = new Label();
-					this.Controls.Add(lbl); 
-					lbl.Top = (i + 1) * 60; // 87
-					lbl.Left = (j + 1) * 100; // 415
+					this.Controls.Add(lbl);
+					lbl.BringToFront();
+					lbl.BackColor = Color.Transparent;
+					lbl.MaximumSize = new Size(120, 0);
+					lbl.AutoSize = true; 
+					lbl.Font = new System.Drawing.Font("Trebuchet MS", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+					lbl.Location = new System.Drawing.Point(7 + (j * 131), 183 + (i*50));
 					int whichPlayer = Model.sortedPoints[i].Item1;
 					int points = Model.sortedPoints[i].Item2;
-					
-					if (j == -1)
+					if (j == 0)
 					{
 						if (whichPlayer == Model.numberOfBots)
-							lbl.Text = "Gracz";
+							lbl.Text = Model.playerName; 
 						else
 							lbl.Text = "Bot " + (whichPlayer + 1); 
 
-						//Console.WriteLine("Gracz " + whichPlayer);
 					}
 
-					else if (j != 6)
+					else if (j != 7)
 					{
 						if (whichPlayer != Model.numberOfBots)
 						{
-							lbl.Text = Model.answersGivenByBots[whichPlayer][j];
-							//Console.WriteLine(Model.answersGivenByBots[whichPlayer][j]);
+							int answerPoints = Model.botAnwerPoints[whichPlayer, j - 1];
+							if (answerPoints == 15)
+								lbl.ForeColor = Color.Green;
+							else if (answerPoints == 10)
+								lbl.ForeColor = Color.Yellow;
+							else
+								lbl.ForeColor = Color.Red; 
+							lbl.Text = Model.answersGivenByBots[whichPlayer][j-1] + " " + answerPoints;
 						}
 						else
 						{
-							lbl.Text = Model.answersGivenByPlayer[j];
-							//Console.WriteLine(Model.answersGivenByPlayer[j]);
+							yourPlace.Text = "Zajmujesz " + (i+1) + " miejsce";
+							int answerPoints = Model.playerAnswerPoints[j - 1];
+							if (answerPoints == 15)
+								lbl.ForeColor = Color.Green;
+							else if (answerPoints == 10)
+								lbl.ForeColor = Color.Yellow;
+							else
+								lbl.ForeColor = Color.Red;
+							if (Model.answersGivenByPlayer[j - 1] == "")
+								lbl.Text = "- " + answerPoints;
+							else
+								lbl.Text = Model.answersGivenByPlayer[j - 1] + " " + answerPoints;
 						}
 
 					}
 					else
 					{
 						lbl.Text = points.ToString();
-						//Console.WriteLine(points); 
 					}
 				}
 			}
-			
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
 			Application.OpenForms["Game"].Close();  
+		}
+
+		private void Scoreboard_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

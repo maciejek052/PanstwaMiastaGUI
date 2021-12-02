@@ -17,34 +17,36 @@ namespace PanstwaMiastaWinForms
 			InitializeComponent();
 			letter.Text = "Litera: " + Char.ToUpper(Model.alphabet[Model.randomIndexes[Model.currentRoundNumber-1]]);
 			roundLabel.Text = "Runda: " + Model.currentRoundNumber + "/" + Model.roundsAmount;
-			this.Text = "Panstwa-miasta - runda " + Model.currentRoundNumber + "/" + Model.roundsAmount; 
+			this.Text = "Panstwa-miasta - runda " + Model.currentRoundNumber + "/" + Model.roundsAmount;
+			if (Model.difficultyLevel == 2)
+				hideCheats();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
 			addAnswersToList();
 			lockTextboxes();
-			if (Model.possibleAnswers[0].Contains(panstwo.Text))
+			if (Model.possibleAnswers[0].Contains(panstwo.Text, StringComparer.OrdinalIgnoreCase))
 				panstwo.BackColor = Color.LightGreen;
 			else
 				panstwo.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[1].Contains(miasto.Text))
+			if (Model.possibleAnswers[1].Contains(miasto.Text, StringComparer.OrdinalIgnoreCase))
 				miasto.BackColor = Color.LightGreen;
 			else
 				miasto.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[2].Contains(zwierze.Text))
+			if (Model.possibleAnswers[2].Contains(zwierze.Text, StringComparer.OrdinalIgnoreCase))
 				zwierze.BackColor = Color.LightGreen;
 			else
 				zwierze.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[3].Contains(zawod.Text))
+			if (Model.possibleAnswers[3].Contains(zawod.Text, StringComparer.OrdinalIgnoreCase))
 				zawod.BackColor = Color.LightGreen;
 			else
 				zawod.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[4].Contains(owoc.Text))
+			if (Model.possibleAnswers[4].Contains(owoc.Text, StringComparer.OrdinalIgnoreCase))
 				owoc.BackColor = Color.LightGreen;
 			else
 				owoc.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[5].Contains(kolor.Text))
+			if (Model.possibleAnswers[5].Contains(kolor.Text, StringComparer.OrdinalIgnoreCase))
 				kolor.BackColor = Color.LightGreen;
 			else
 				kolor.BackColor = Color.OrangeRed;
@@ -55,7 +57,6 @@ namespace PanstwaMiastaWinForms
 		private void button2_Click(object sender, EventArgs e)
 		{
 			// construct new scoreboard
-			hideStuff();
 			GameLogic.countPoints(); 
 			scoreboard(); 
 
@@ -84,11 +85,6 @@ namespace PanstwaMiastaWinForms
 			zawod.ReadOnly = true;
 			owoc.ReadOnly = true;
 			kolor.ReadOnly = true;
-		}
-		private void hideStuff()
-		{
-			// I can't make new userform to appear in front so I make every element invisible
-
 		}
 		private void scoreboard()
 		{
@@ -154,6 +150,15 @@ namespace PanstwaMiastaWinForms
 		public void endRound()
 		{
 			this.Close(); 
+		}
+		public void hideCheats()
+		{
+			cheatPanstwo.Visible = false;
+			cheatMiasto.Visible = false;
+			cheatZwierze.Visible = false;
+			cheatZawod.Visible = false;
+			cheatOwoc.Visible = false;
+			cheatKolor.Visible = false;
 		}
 	}
 }

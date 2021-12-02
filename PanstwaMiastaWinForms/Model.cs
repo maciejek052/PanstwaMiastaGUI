@@ -16,7 +16,8 @@ namespace PanstwaMiastaWinForms
 
 		public static char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'w', 'z' };
 
-		public static string[] answersGivenByPlayer = new string[6]; 
+		public static string[] answersGivenByPlayer = new string[6];
+		public static string playerName; 
 
 		public static int currentLetterIndex = 0;
 		public static int currentRoundNumber = 0;
@@ -28,7 +29,7 @@ namespace PanstwaMiastaWinForms
 		public static int[] playerAnswerPoints = new int[6];
 		public static int[] botsPoints = new int[5];
 
-		public static bool endRound = false;
+		
 
 	}
 }

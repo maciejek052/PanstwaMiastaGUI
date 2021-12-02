@@ -109,7 +109,7 @@ namespace PanstwaMiastaWinForms
 						Model.botAnwerPoints[i,j] = 0;
 					else
 					{
-						int repeats = Model.allGivenAnswers.Where(x => (x == Model.answersGivenByBots[i][j])).Count();
+						int repeats = Model.allGivenAnswers.Where(x => (x.ToLower() == Model.answersGivenByBots[i][j].ToLower())).Count();
 						if (repeats == 1)
 						{
 							Model.botAnwerPoints[i,j] = 15;
@@ -125,9 +125,9 @@ namespace PanstwaMiastaWinForms
 			}
 			for (int i = 0; i < 6; i++)
 			{
-				if (Model.possibleAnswers[i].Contains(Model.answersGivenByPlayer[i]))
+				if (Model.possibleAnswers[i].Contains(Model.answersGivenByPlayer[i], StringComparer.OrdinalIgnoreCase))
 				{
-					int repeats = Model.allGivenAnswers.Where(x => (x == Model.answersGivenByPlayer[i])).Count();
+					int repeats = Model.allGivenAnswers.Where(x => (x.ToLower() == Model.answersGivenByPlayer[i].ToLower())).Count();
 					if (repeats == 1)
 					{
 						Model.playerAnswerPoints[i] = 15;

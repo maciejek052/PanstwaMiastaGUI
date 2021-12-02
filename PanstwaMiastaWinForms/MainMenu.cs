@@ -98,6 +98,7 @@ namespace PanstwaMiastaWinForms
 		{
 			// this.Close();
 			starting1.Visible = true;
+			Model.playerName = nameBox.Text; 
 			starting1.diffLabelText = "Poziom trudności: " + difficultyBox.Text;
 			starting1.roundsLabelText = "Liczba rund: " + roundAmountBox.Text;
 			starting1.botsLabelText = "Liczba botów: " + botAmountBox.Text; 
