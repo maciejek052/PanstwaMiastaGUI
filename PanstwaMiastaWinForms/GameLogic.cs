@@ -118,7 +118,7 @@ namespace PanstwaMiastaWinForms
 						else
 						{
 							Model.botAnwerPoints[i, j] = 10;
-							Model.botsPoints[i] += 15;
+							Model.botsPoints[i] += 10;
 						}
 					}
 				}
@@ -147,7 +147,7 @@ namespace PanstwaMiastaWinForms
 			for (int i = 0; i < Model.numberOfBots; i++)
 				Model.sortedPoints.Add(Tuple.Create(i, Model.botsPoints[i]));
 			Model.sortedPoints.Add(Tuple.Create(Model.numberOfBots, Model.playerPoints));
-			Model.sortedPoints.OrderByDescending(t => t.Item1); 
+			Model.sortedPoints.Sort((a, b) => b.Item2.CompareTo(a.Item2));  
 		}
 
 	}
