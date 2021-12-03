@@ -40,7 +40,6 @@ namespace PanstwaMiastaWinForms
 			this.label8 = new System.Windows.Forms.Label();
 			this.roundNo = new System.Windows.Forms.Label();
 			this.yourPlace = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@ namespace PanstwaMiastaWinForms
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
+			this.label9 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// button2
@@ -151,18 +151,6 @@ namespace PanstwaMiastaWinForms
 			this.yourPlace.Text = "Zajmujesz 1 miejsce";
 			this.yourPlace.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.BackColor = System.Drawing.Color.Transparent;
-			this.label9.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.ForeColor = System.Drawing.Color.Navy;
-			this.label9.Location = new System.Drawing.Point(5, 128);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(75, 27);
-			this.label9.TabIndex = 26;
-			this.label9.Text = "Gracz:";
-			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
@@ -248,6 +236,18 @@ namespace PanstwaMiastaWinForms
 			this.label16.TabIndex = 33;
 			this.label16.Text = "Wynik:";
 			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.BackColor = System.Drawing.Color.Transparent;
+			this.label9.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label9.ForeColor = System.Drawing.Color.Navy;
+			this.label9.Location = new System.Drawing.Point(5, 128);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(75, 27);
+			this.label9.TabIndex = 26;
+			this.label9.Text = "Gracz:";
+			// 
 			// Scoreboard
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +293,6 @@ namespace PanstwaMiastaWinForms
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label roundNo;
 		private System.Windows.Forms.Label yourPlace;
-		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
@@ -301,5 +300,6 @@ namespace PanstwaMiastaWinForms
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label15;
 		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label9;
 	}
 }

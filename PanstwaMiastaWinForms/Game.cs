@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,50 +13,41 @@ namespace PanstwaMiastaWinForms
 {
 	public partial class Game : Form
 	{
+		bool timerWork = false;
+		int timeLeft;
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			if (new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
+				return; 
+			else
+				System.Environment.Exit(0);
+		}
 		public Game()
 		{
 			InitializeComponent();
-			this.ControlBox = false;
 			this.DoubleBuffered = true;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			letter.Text = "Litera: " + Char.ToUpper(Model.alphabet[Model.randomIndexes[Model.currentRoundNumber-1]]);
 			roundLabel.Text = "Runda: " + Model.currentRoundNumber + "/" + Model.roundsAmount;
 			this.Text = "Panstwa-miasta - runda " + Model.currentRoundNumber + "/" + Model.roundsAmount;
-			if (Model.difficultyLevel == 2)
-				hideCheats();
+			switch (Model.difficultyLevel)
+			{
+				case 0:
+					timeLeft = 40;
+					break;
+				case 1:
+					timeLeft = 30;
+					break;
+				case 2:
+					timeLeft = 20;
+					hideCheats();
+					break;
+			}
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			addAnswersToList();
-			hideCheats();
-			lockTextboxes();
-			if (Model.possibleAnswers[0].Contains(panstwo.Text, StringComparer.OrdinalIgnoreCase))
-				panstwo.BackColor = Color.LightGreen;
-			else
-				panstwo.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[1].Contains(miasto.Text, StringComparer.OrdinalIgnoreCase))
-				miasto.BackColor = Color.LightGreen;
-			else
-				miasto.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[2].Contains(zwierze.Text, StringComparer.OrdinalIgnoreCase))
-				zwierze.BackColor = Color.LightGreen;
-			else
-				zwierze.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[3].Contains(zawod.Text, StringComparer.OrdinalIgnoreCase))
-				zawod.BackColor = Color.LightGreen;
-			else
-				zawod.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[4].Contains(owoc.Text, StringComparer.OrdinalIgnoreCase))
-				owoc.BackColor = Color.LightGreen;
-			else
-				owoc.BackColor = Color.OrangeRed;
-			if (Model.possibleAnswers[5].Contains(kolor.Text, StringComparer.OrdinalIgnoreCase))
-				kolor.BackColor = Color.LightGreen;
-			else
-				kolor.BackColor = Color.OrangeRed;
-			button1.Visible = false;
-			button2.Visible = true; 
+			lockRound();
 		}
 		
 		private void button2_Click(object sender, EventArgs e)
@@ -93,7 +85,6 @@ namespace PanstwaMiastaWinForms
 		private void scoreboard()
 		{
 			Scoreboard scoreboard = new Scoreboard();
-			
 			scoreboard.Location = new System.Drawing.Point(0, 0);
 			scoreboard.Name = "scoreboard";
 			scoreboard.Size = new System.Drawing.Size(1012, 617);
@@ -108,12 +99,7 @@ namespace PanstwaMiastaWinForms
 			int possibilities = Model.possibleAnswers[category].Count;
 			if (possibilities != 0)
 			{
-				cheatPanstwo.Visible = false;
-				cheatMiasto.Visible = false;
-				cheatZwierze.Visible = false;
-				cheatZawod.Visible = false;
-				cheatOwoc.Visible = false;
-				cheatKolor.Visible = false;
+				hideCheats();
 				int idx = rd.Next(possibilities);
 				string answer = Model.possibleAnswers[category][idx];
 				return answer;
@@ -164,6 +150,59 @@ namespace PanstwaMiastaWinForms
 			cheatOwoc.Visible = false;
 			cheatKolor.Visible = false;
 		}
-
+		private void gameTimer_Tick(object sender, EventArgs e)
+		{
+			if (letterAnimation1.gameStart)
+			{
+				letterAnimation1.gameStart = false;
+				timerWork = true;
+				timeLeftLabel.Visible = true; 
+			}
+			if (timerWork)
+			{
+				timeLeft--;
+				if (timeLeft <= 5)
+					timeLeftLabel.ForeColor = Color.Red; 
+				timeLeftLabel.Text = "Pozostały czas: " + timeLeft;
+			}
+			if (timeLeft == 0)
+			{
+				lockRound();
+			}
+		}
+		void lockRound()
+		{
+			gameTimer.Enabled = false;
+			timeLeftLabel.Visible = false; 
+			addAnswersToList();
+			hideCheats();
+			lockTextboxes();
+			if (Model.possibleAnswers[0].Contains(panstwo.Text, StringComparer.OrdinalIgnoreCase))
+				panstwo.BackColor = Color.LightGreen;
+			else
+				panstwo.BackColor = Color.OrangeRed;
+			if (Model.possibleAnswers[1].Contains(miasto.Text, StringComparer.OrdinalIgnoreCase))
+				miasto.BackColor = Color.LightGreen;
+			else
+				miasto.BackColor = Color.OrangeRed;
+			if (Model.possibleAnswers[2].Contains(zwierze.Text, StringComparer.OrdinalIgnoreCase))
+				zwierze.BackColor = Color.LightGreen;
+			else
+				zwierze.BackColor = Color.OrangeRed;
+			if (Model.possibleAnswers[3].Contains(zawod.Text, StringComparer.OrdinalIgnoreCase))
+				zawod.BackColor = Color.LightGreen;
+			else
+				zawod.BackColor = Color.OrangeRed;
+			if (Model.possibleAnswers[4].Contains(owoc.Text, StringComparer.OrdinalIgnoreCase))
+				owoc.BackColor = Color.LightGreen;
+			else
+				owoc.BackColor = Color.OrangeRed;
+			if (Model.possibleAnswers[5].Contains(kolor.Text, StringComparer.OrdinalIgnoreCase))
+				kolor.BackColor = Color.LightGreen;
+			else
+				kolor.BackColor = Color.OrangeRed;
+			button1.Visible = false;
+			button2.Visible = true;
+		}
 	}
 }

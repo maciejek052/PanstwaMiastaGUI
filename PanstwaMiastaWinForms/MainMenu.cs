@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,10 +27,16 @@ namespace PanstwaMiastaWinForms
 		}
 
 		bool isPaused = false;
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			if (new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
+				return;
+			else
+				System.Environment.Exit(0);
+		}
 		public MainMenu()
 		{
 			InitializeComponent();
-			this.ControlBox = false;
 			this.DoubleBuffered = true;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			axWindowsMediaPlayer1.settings.playCount = 1000;

@@ -27,7 +27,7 @@ namespace PanstwaMiastaWinForms
 					this.Controls.Add(lbl);
 					lbl.BringToFront();
 					lbl.BackColor = Color.Transparent;
-					lbl.MaximumSize = new Size(120, 0);
+					lbl.MaximumSize = new Size(120, 46);
 					lbl.AutoSize = true; 
 					lbl.Font = new System.Drawing.Font("Trebuchet MS", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 					lbl.Location = new System.Drawing.Point(7 + (j * 131), 183 + (i*50));

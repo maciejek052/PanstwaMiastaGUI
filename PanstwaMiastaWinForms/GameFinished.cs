@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,17 @@ namespace PanstwaMiastaWinForms
 {
 	public partial class GameFinished : Form
 	{
+		protected override void OnFormClosing(FormClosingEventArgs e)
+		{
+			if (new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close"))
+				return;
+			else
+				System.Environment.Exit(0);
+		}
+
 		public GameFinished()
 		{
 			InitializeComponent();
-			this.ControlBox = false;
 			this.DoubleBuffered = true;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			if (Model.sortedPoints[0].Item2 == Model.playerPoints)

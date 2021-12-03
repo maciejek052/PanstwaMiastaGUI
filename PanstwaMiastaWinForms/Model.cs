@@ -38,6 +38,12 @@ namespace PanstwaMiastaWinForms
 		}
 		public static void initGame()
 		{
+			playerPoints = 0;
+			numberOfBots = 0;
+			difficultyLevel = 0;
+			roundsAmount = 0;
+			currentLetterIndex = 0;
+			currentRoundNumber = 0;
 			randomIndexes.Clear();
 			Array.Clear(answersGivenByPlayer, 0, answersGivenByPlayer.Length);
 			Array.Clear(botAnwerPoints, 0, botAnwerPoints.Length);

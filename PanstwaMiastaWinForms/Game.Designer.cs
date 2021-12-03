@@ -29,6 +29,7 @@ namespace PanstwaMiastaWinForms
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
 			this.panstwo = new System.Windows.Forms.TextBox();
 			this.miasto = new System.Windows.Forms.TextBox();
@@ -52,6 +53,8 @@ namespace PanstwaMiastaWinForms
 			this.cheatZawod = new System.Windows.Forms.Button();
 			this.cheatOwoc = new System.Windows.Forms.Button();
 			this.cheatKolor = new System.Windows.Forms.Button();
+			this.gameTimer = new System.Windows.Forms.Timer(this.components);
+			this.timeLeftLabel = new System.Windows.Forms.Label();
 			this.letterAnimation1 = new PanstwaMiastaWinForms.LetterAnimation();
 			this.SuspendLayout();
 			// 
@@ -59,7 +62,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.panstwo.BackColor = System.Drawing.SystemColors.Window;
 			this.panstwo.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.panstwo.Location = new System.Drawing.Point(411, 177);
+			this.panstwo.Location = new System.Drawing.Point(413, 140);
 			this.panstwo.Name = "panstwo";
 			this.panstwo.Size = new System.Drawing.Size(307, 43);
 			this.panstwo.TabIndex = 0;
@@ -67,7 +70,7 @@ namespace PanstwaMiastaWinForms
 			// miasto
 			// 
 			this.miasto.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.miasto.Location = new System.Drawing.Point(411, 225);
+			this.miasto.Location = new System.Drawing.Point(413, 188);
 			this.miasto.Name = "miasto";
 			this.miasto.Size = new System.Drawing.Size(307, 43);
 			this.miasto.TabIndex = 1;
@@ -75,7 +78,7 @@ namespace PanstwaMiastaWinForms
 			// zwierze
 			// 
 			this.zwierze.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.zwierze.Location = new System.Drawing.Point(411, 274);
+			this.zwierze.Location = new System.Drawing.Point(413, 237);
 			this.zwierze.Name = "zwierze";
 			this.zwierze.Size = new System.Drawing.Size(307, 43);
 			this.zwierze.TabIndex = 2;
@@ -83,7 +86,7 @@ namespace PanstwaMiastaWinForms
 			// zawod
 			// 
 			this.zawod.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.zawod.Location = new System.Drawing.Point(411, 323);
+			this.zawod.Location = new System.Drawing.Point(413, 286);
 			this.zawod.Name = "zawod";
 			this.zawod.Size = new System.Drawing.Size(307, 43);
 			this.zawod.TabIndex = 3;
@@ -91,7 +94,7 @@ namespace PanstwaMiastaWinForms
 			// owoc
 			// 
 			this.owoc.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.owoc.Location = new System.Drawing.Point(411, 372);
+			this.owoc.Location = new System.Drawing.Point(413, 335);
 			this.owoc.Name = "owoc";
 			this.owoc.Size = new System.Drawing.Size(307, 43);
 			this.owoc.TabIndex = 4;
@@ -99,7 +102,7 @@ namespace PanstwaMiastaWinForms
 			// button1
 			// 
 			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.button1.Location = new System.Drawing.Point(411, 507);
+			this.button1.Location = new System.Drawing.Point(390, 507);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(235, 59);
 			this.button1.TabIndex = 6;
@@ -110,7 +113,7 @@ namespace PanstwaMiastaWinForms
 			// kolor
 			// 
 			this.kolor.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.kolor.Location = new System.Drawing.Point(411, 421);
+			this.kolor.Location = new System.Drawing.Point(413, 384);
 			this.kolor.Name = "kolor";
 			this.kolor.Size = new System.Drawing.Size(307, 43);
 			this.kolor.TabIndex = 5;
@@ -121,7 +124,7 @@ namespace PanstwaMiastaWinForms
 			this.label1.BackColor = System.Drawing.Color.Transparent;
 			this.label1.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label1.ForeColor = System.Drawing.Color.Blue;
-			this.label1.Location = new System.Drawing.Point(269, 177);
+			this.label1.Location = new System.Drawing.Point(271, 140);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(136, 38);
 			this.label1.TabIndex = 7;
@@ -133,7 +136,7 @@ namespace PanstwaMiastaWinForms
 			this.label2.BackColor = System.Drawing.Color.Transparent;
 			this.label2.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label2.ForeColor = System.Drawing.Color.Blue;
-			this.label2.Location = new System.Drawing.Point(286, 226);
+			this.label2.Location = new System.Drawing.Point(288, 189);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(119, 38);
 			this.label2.TabIndex = 8;
@@ -145,7 +148,7 @@ namespace PanstwaMiastaWinForms
 			this.label3.BackColor = System.Drawing.Color.Transparent;
 			this.label3.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label3.ForeColor = System.Drawing.Color.Blue;
-			this.label3.Location = new System.Drawing.Point(269, 275);
+			this.label3.Location = new System.Drawing.Point(271, 238);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(136, 38);
 			this.label3.TabIndex = 9;
@@ -157,7 +160,7 @@ namespace PanstwaMiastaWinForms
 			this.label4.BackColor = System.Drawing.Color.Transparent;
 			this.label4.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label4.ForeColor = System.Drawing.Color.Blue;
-			this.label4.Location = new System.Drawing.Point(303, 324);
+			this.label4.Location = new System.Drawing.Point(305, 287);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(102, 38);
 			this.label4.TabIndex = 10;
@@ -169,7 +172,7 @@ namespace PanstwaMiastaWinForms
 			this.label5.BackColor = System.Drawing.Color.Transparent;
 			this.label5.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label5.ForeColor = System.Drawing.Color.Blue;
-			this.label5.Location = new System.Drawing.Point(184, 373);
+			this.label5.Location = new System.Drawing.Point(186, 337);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(221, 38);
 			this.label5.TabIndex = 11;
@@ -181,7 +184,7 @@ namespace PanstwaMiastaWinForms
 			this.label6.BackColor = System.Drawing.Color.Transparent;
 			this.label6.Font = new System.Drawing.Font("Roboto Mono", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.label6.ForeColor = System.Drawing.Color.Blue;
-			this.label6.Location = new System.Drawing.Point(303, 422);
+			this.label6.Location = new System.Drawing.Point(305, 385);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(102, 38);
 			this.label6.TabIndex = 12;
@@ -193,7 +196,7 @@ namespace PanstwaMiastaWinForms
 			this.letter.BackColor = System.Drawing.Color.Transparent;
 			this.letter.Font = new System.Drawing.Font("Roboto Mono", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.letter.ForeColor = System.Drawing.Color.Navy;
-			this.letter.Location = new System.Drawing.Point(0, 104);
+			this.letter.Location = new System.Drawing.Point(2, 67);
 			this.letter.Name = "letter";
 			this.letter.Size = new System.Drawing.Size(1012, 49);
 			this.letter.TabIndex = 13;
@@ -203,7 +206,7 @@ namespace PanstwaMiastaWinForms
 			// button2
 			// 
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-			this.button2.Location = new System.Drawing.Point(411, 507);
+			this.button2.Location = new System.Drawing.Point(390, 507);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(235, 59);
 			this.button2.TabIndex = 14;
@@ -218,7 +221,7 @@ namespace PanstwaMiastaWinForms
 			this.roundLabel.BackColor = System.Drawing.Color.Transparent;
 			this.roundLabel.Font = new System.Drawing.Font("Roboto Mono", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
 			this.roundLabel.ForeColor = System.Drawing.Color.DarkGreen;
-			this.roundLabel.Location = new System.Drawing.Point(0, 46);
+			this.roundLabel.Location = new System.Drawing.Point(2, 9);
 			this.roundLabel.Name = "roundLabel";
 			this.roundLabel.Size = new System.Drawing.Size(1012, 49);
 			this.roundLabel.TabIndex = 16;
@@ -229,7 +232,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatPanstwo.BackColor = System.Drawing.Color.Gold;
 			this.cheatPanstwo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatPanstwo.Location = new System.Drawing.Point(725, 177);
+			this.cheatPanstwo.Location = new System.Drawing.Point(727, 140);
 			this.cheatPanstwo.Name = "cheatPanstwo";
 			this.cheatPanstwo.Size = new System.Drawing.Size(46, 43);
 			this.cheatPanstwo.TabIndex = 17;
@@ -241,7 +244,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatMiasto.BackColor = System.Drawing.Color.Gold;
 			this.cheatMiasto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatMiasto.Location = new System.Drawing.Point(725, 226);
+			this.cheatMiasto.Location = new System.Drawing.Point(727, 189);
 			this.cheatMiasto.Name = "cheatMiasto";
 			this.cheatMiasto.Size = new System.Drawing.Size(46, 43);
 			this.cheatMiasto.TabIndex = 18;
@@ -253,7 +256,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatZwierze.BackColor = System.Drawing.Color.Gold;
 			this.cheatZwierze.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatZwierze.Location = new System.Drawing.Point(725, 275);
+			this.cheatZwierze.Location = new System.Drawing.Point(727, 238);
 			this.cheatZwierze.Name = "cheatZwierze";
 			this.cheatZwierze.Size = new System.Drawing.Size(47, 43);
 			this.cheatZwierze.TabIndex = 19;
@@ -265,7 +268,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatZawod.BackColor = System.Drawing.Color.Gold;
 			this.cheatZawod.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatZawod.Location = new System.Drawing.Point(725, 324);
+			this.cheatZawod.Location = new System.Drawing.Point(727, 287);
 			this.cheatZawod.Name = "cheatZawod";
 			this.cheatZawod.Size = new System.Drawing.Size(46, 43);
 			this.cheatZawod.TabIndex = 20;
@@ -277,7 +280,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatOwoc.BackColor = System.Drawing.Color.Gold;
 			this.cheatOwoc.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatOwoc.Location = new System.Drawing.Point(725, 373);
+			this.cheatOwoc.Location = new System.Drawing.Point(727, 336);
 			this.cheatOwoc.Name = "cheatOwoc";
 			this.cheatOwoc.Size = new System.Drawing.Size(47, 43);
 			this.cheatOwoc.TabIndex = 21;
@@ -289,7 +292,7 @@ namespace PanstwaMiastaWinForms
 			// 
 			this.cheatKolor.BackColor = System.Drawing.Color.Gold;
 			this.cheatKolor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.cheatKolor.Location = new System.Drawing.Point(725, 422);
+			this.cheatKolor.Location = new System.Drawing.Point(727, 385);
 			this.cheatKolor.Name = "cheatKolor";
 			this.cheatKolor.Size = new System.Drawing.Size(47, 43);
 			this.cheatKolor.TabIndex = 22;
@@ -297,9 +300,30 @@ namespace PanstwaMiastaWinForms
 			this.cheatKolor.UseVisualStyleBackColor = false;
 			this.cheatKolor.Click += new System.EventHandler(this.cheatKolor_Click);
 			// 
+			// gameTimer
+			// 
+			this.gameTimer.Enabled = true;
+			this.gameTimer.Interval = 1000;
+			this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
+			// 
+			// timeLeftLabel
+			// 
+			this.timeLeftLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.timeLeftLabel.BackColor = System.Drawing.Color.Transparent;
+			this.timeLeftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+			this.timeLeftLabel.ForeColor = System.Drawing.Color.SeaGreen;
+			this.timeLeftLabel.Location = new System.Drawing.Point(0, 451);
+			this.timeLeftLabel.Name = "timeLeftLabel";
+			this.timeLeftLabel.Size = new System.Drawing.Size(1012, 33);
+			this.timeLeftLabel.TabIndex = 23;
+			this.timeLeftLabel.Text = "Pozostały czas: 50";
+			this.timeLeftLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.timeLeftLabel.Visible = false;
+			// 
 			// letterAnimation1
 			// 
 			this.letterAnimation1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("letterAnimation1.BackgroundImage")));
+			this.letterAnimation1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.letterAnimation1.Location = new System.Drawing.Point(0, 0);
 			this.letterAnimation1.Name = "letterAnimation1";
 			this.letterAnimation1.Size = new System.Drawing.Size(1012, 617);
@@ -311,6 +335,7 @@ namespace PanstwaMiastaWinForms
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImage = global::PanstwaMiastaWinForms.Properties.Resources.bg_moreblur;
 			this.ClientSize = new System.Drawing.Size(1012, 617);
+			this.Controls.Add(this.timeLeftLabel);
 			this.Controls.Add(this.letterAnimation1);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.letter);
@@ -368,5 +393,7 @@ namespace PanstwaMiastaWinForms
 		private System.Windows.Forms.Button cheatZawod;
 		private System.Windows.Forms.Button cheatOwoc;
 		private System.Windows.Forms.Button cheatKolor;
+		private System.Windows.Forms.Timer gameTimer;
+		private System.Windows.Forms.Label timeLeftLabel;
 	}
 }

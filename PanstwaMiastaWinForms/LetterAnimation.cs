@@ -12,6 +12,7 @@ namespace PanstwaMiastaWinForms
 {
 	public partial class LetterAnimation : UserControl
 	{
+		public bool gameStart = false; 
 		public LetterAnimation()
 		{
 			InitializeComponent();
@@ -33,7 +34,8 @@ namespace PanstwaMiastaWinForms
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.Visible = false; 
+			this.Visible = false;
+			gameStart = true; 
 		}
 	}
 }
